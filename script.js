@@ -38,7 +38,6 @@ const playGame = function() {
             }
             console.log(`${winner === 'Computer' ? computerChoice : humanChoice} beats ${winner !== 'Computer' ? computerChoice : humanChoice}! ${winner === 'Computer' ? 'Computer' : 'Human'} wins this round!`);
         }
-        else console.log(humanChoice);
     };
 
     let human = '';
@@ -52,7 +51,7 @@ const playGame = function() {
         if(human !== 'Invalid') {
             playRound(human, computer);
             i++;
-        } else playRound(human, computer);
+        } else console.log('Invalid');
     }
     if(humanScore > computerScore) console.log(`HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`);
     else if(humanScore < computerScore) console.log(`COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`);
