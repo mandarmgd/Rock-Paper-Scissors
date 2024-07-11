@@ -16,30 +16,6 @@ const getHumanChoice = function() {
     else return 'Invalid';
 };
 
-// let humanScore = 0;
-// let computerScore = 0;
-
-// const playRound = function(humanChoice, computerChoice) {
-//     if (humanChoice === computerChoice) console.log("It's a tie!");
-//     else if (humanChoice !== computerChoice && humanChoice !== 'Invalid') {
-//         let winner = '';
-//         let loser = '';
-//         if((humanChoice === 'rock' && computerChoice === 'paper') 
-//         || (humanChoice === 'paper' && computerChoice === 'scissors')
-//         || (humanChoice === 'scissors' && computerChoice === 'rock')) {
-//             winner = 'Computer';
-//             loser = 'Human';
-//             computerScore++;
-//         } else {
-//             winner = 'Human';
-//             loser = 'Computer';
-//             humanScore++;
-//         }
-//         console.log(`${winner === 'Computer' ? computerChoice : humanChoice} beats ${winner !== 'Computer' ? computerChoice : humanChoice}! ${winner === 'Computer' ? 'Computer' : 'Human'} wins this round!`);
-//     }
-//     else console.log(humanChoice);
-// };
-
 const playGame = function() {
     let humanScore = 0;
     let computerScore = 0;
@@ -72,15 +48,15 @@ const playGame = function() {
     while(i <= 5) {
         human = getHumanChoice();
         computer = getComputerChoice();
-        
+
         if(human !== 'Invalid') {
             playRound(human, computer);
             i++;
         } else playRound(human, computer);
     }
-    if(humanScore > computerScore) console.log('HUMAN WINS THE GAME :D');
-    else if(humanScore < computerScore) console.log('COMPUTER WINS THE GAME!');
-    else console.log('THE GAME IS TIED!');
+    if(humanScore > computerScore) console.log(`HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`);
+    else if(humanScore < computerScore) console.log(`COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`);
+    else console.log(`THE GAME IS TIED! (${humanScore} - ${computerScore})`);
 };
 
 playGame();
