@@ -21,8 +21,8 @@ const playGame = function() {
     let computerScore = 0;
 
     const playRound = function(humanChoice, computerChoice) {
-        if (humanChoice === computerChoice) console.log("It's a tie!");
-        else if (humanChoice !== computerChoice && humanChoice !== 'Invalid') {
+        if (humanChoice === computerChoice) console.log(`It's a tie! (${humanScore} - ${computerScore})`);
+        else if (humanChoice !== computerChoice) {
             let winner = '';
             let loser = '';
             if((humanChoice === 'rock' && computerChoice === 'paper') 
@@ -36,7 +36,7 @@ const playGame = function() {
                 loser = 'Computer';
                 humanScore++;
             }
-            console.log(`${winner === 'Computer' ? computerChoice : humanChoice} beats ${winner !== 'Computer' ? computerChoice : humanChoice}! ${winner === 'Computer' ? 'Computer' : 'Human'} wins this round!`);
+            console.log(`${winner === 'Computer' ? computerChoice : humanChoice} beats ${winner !== 'Computer' ? computerChoice : humanChoice}! ${winner === 'Computer' ? 'Computer' : 'Human'} wins this round! (${humanScore} - ${computerScore})`);
         }
     };
 
