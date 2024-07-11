@@ -7,4 +7,11 @@ const getComputerChoice = function() {
     else return 'scissors';
 }
 
-console.log(getComputerChoice());
+const getHumanChoice = function() {
+    const choice = prompt("It's your turn, will it be rock, paper or scissors ?");
+    if (choice === 'rock') return 'rock';
+    else if (choice === 'paper') return 'paper';
+    else if (choice === 'scissors') return 'scissors';
+    else return 'Invalid choice';
+}
+
