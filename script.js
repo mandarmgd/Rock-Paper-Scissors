@@ -15,3 +15,6 @@ const getHumanChoice = function() {
     else return 'Invalid choice';
 }
 
+let humanScore = 0;
+let computerScore = 0;
+
