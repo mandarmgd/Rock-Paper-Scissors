@@ -58,7 +58,5 @@ const playGame = function() {
     else console.log(`THE GAME IS TIED! (${humanScore} - ${computerScore})`);
 };
 
-playGame();
-
 
 
