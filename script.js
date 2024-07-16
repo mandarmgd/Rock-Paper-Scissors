@@ -9,10 +9,10 @@ const getComputerChoice = function() {
 
 const getHumanChoice = function() {
     let choice = prompt("It's your turn, will it be rock, paper or scissors ?");
-    choice = choice.toLowerCase();
-    if (choice === 'rock') return 'rock';
-    else if (choice === 'paper') return 'paper';
-    else if (choice === 'scissors') return 'scissors';
+    const choice2 = choice.toLowerCase();
+    if (choice2 === 'rock') return 'rock';
+    else if (choice2 === 'paper') return 'paper';
+    else if (choice2 === 'scissors') return 'scissors';
     else return 'Invalid';
 };
 
@@ -56,9 +56,7 @@ const playGame = function() {
     if(humanScore > computerScore) return `HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`;
     else if(humanScore < computerScore) return `COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`;
     else return `THE GAME IS TIED! ${humanScore} - ${computerScore})`;
-};
-
-playGame();
+}
 
 
 
