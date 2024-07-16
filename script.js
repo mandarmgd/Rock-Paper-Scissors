@@ -53,9 +53,9 @@ const playGame = function() {
             i++;
         } else console.log('Invalid');
     }
-    if(humanScore > computerScore) console.log(`HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`);
-    else if(humanScore < computerScore) console.log(`COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`);
-    else console.log(`THE GAME IS TIED! (${humanScore} - ${computerScore})`);
+    if(humanScore > computerScore) return `HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`;
+    else if(humanScore < computerScore) return `COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`;
+    else return `THE GAME IS TIED! ${humanScore} - ${computerScore})`;
 };
 
 playGame();
