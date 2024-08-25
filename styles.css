@@ -40,7 +40,6 @@ button {
 .btn-start {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-bottom: 20px;
   margin: 0 auto 10px auto;
 }
@@ -49,7 +48,6 @@ button {
   background: rgb(170, 141, 92);
   display: flex;
   justify-content: center;
-  align-items: center;
   color: white;
   height: 25px;
   width: 100%;
@@ -59,6 +57,8 @@ button {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button:hover {
@@ -71,7 +71,7 @@ button:hover {
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
+  margin-top: 70px;
   gap: 20px;
 }
 

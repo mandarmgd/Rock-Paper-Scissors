@@ -1,98 +1,103 @@
 'use strict';
 
-const btnRock = document.querySelector('.btn-rock');
-const btnPaper = document.querySelector('.btn-paper');
-const btnScissors = document.querySelector('.btn-scissors');
+const btns = document.querySelectorAll('.btn');
+const buttons = document.querySelector('.buttons');
+const btnStart = document.querySelector('.btn-start');
 const compRound = document.querySelector('.round-computer');
 const humanRound = document.querySelector('.round-human');
 const compGame = document.querySelector('.game-computer');
 const humanGame = document.querySelector('.game-human');
-const compScore = document.getElementById('score-computer');
-const humanScore = document.getElementById('score-you');
+const scores = document.querySelector('.scores');
+let computerScore = document.getElementById('score-computer');
+let humanScore = document.getElementById('score-you');
 const content = document.getElementById('content');
 
-const result = document.createElement('element');
-// result.classList.add('hidden');
-const finalResult = document.createElement('element');
-// finalResult.classList.add('hidden');
-result.textContent = 'You win this round!';
-finalResult.textContent = 'You win the game!';
+const result = document.createElement('div');
+result.classList.add('hidden');
+const finalResult = document.createElement('div');
+finalResult.classList.add('hidden');
 result.style.fontSize = '20px';
 finalResult.style.fontSize = '20px';
 finalResult.style.display = 'block';
 result.style.display = 'block';
 result.style.textAlign = 'center';
 finalResult.style.textAlign = 'center';
-result.style.marginTop = '100px';
-finalResult.style.marginTop = '100px';
-content.appendChild(result);
+result.style.marginBottom = '100px';
+finalResult.style.marginBottom = '100px';
+content.after(result);
 result.after(finalResult);
 
 const getComputerChoice = function () {
   const rand = Math.trunc(Math.random() * 3) + 1;
-  if (rand === 1) return 'rock';
-  else if (rand === 2) return 'paper';
-  else return 'scissors';
+  if (rand === 1) return 'Rock';
+  else if (rand === 2) return 'Paper';
+  else return 'Scissors';
 };
 
-const getHumanChoice = function () {
-  let choice = prompt("It's your turn, will it be rock, paper or scissors ?");
-  const choice2 = choice.toLowerCase();
-  if (choice2 === 'rock') return 'rock';
-  else if (choice2 === 'paper') return 'paper';
-  else if (choice2 === 'scissors') return 'scissors';
-  else return 'Invalid';
-};
+let hScore;
+let cScore;
+btnStart.addEventListener('click', function () {
+  buttons.classList.remove('hidden');
+  btnStart.textContent = 'Again';
+  scores.classList.remove('hidden');
+  computerScore.textContent = '0';
+  humanScore.textContent = '0';
+  hScore = 0;
+  cScore = 0;
+  result.classList.add('hidden');
+  finalResult.classList.add('hidden');
+});
 
-const playGame = function () {
-  let humanScore = 0;
-  let computerScore = 0;
+let humanChoice;
+let computerChoice;
 
-  const playRound = function (humanChoice, computerChoice) {
-    if (humanChoice === computerChoice)
-      console.log(`It's a tie! (${humanScore} - ${computerScore})`);
+const playRound = function (humanChoice, computerChoice) {
+  if (hScore < 5 && cScore < 5) {
+    if (humanChoice === computerChoice) result.textContent = "It's a tie!";
     else if (humanChoice !== computerChoice) {
       let winner = '';
       let loser = '';
       if (
-        (humanChoice === 'rock' && computerChoice === 'paper') ||
-        (humanChoice === 'paper' && computerChoice === 'scissors') ||
-        (humanChoice === 'scissors' && computerChoice === 'rock')
+        (humanChoice === 'Rock' && computerChoice === 'Paper') ||
+        (humanChoice === 'Paper' && computerChoice === 'Scissors') ||
+        (humanChoice === 'Scissors' && computerChoice === 'Rock')
       ) {
         winner = 'Computer';
         loser = 'Human';
-        computerScore++;
+        cScore++;
+        computerScore.textContent = String(cScore);
       } else {
         winner = 'Human';
         loser = 'Computer';
-        humanScore++;
+        hScore++;
+        humanScore.textContent = String(hScore);
       }
-      console.log(
-        `${winner === 'Computer' ? computerChoice : humanChoice} beats ${
-          winner !== 'Computer' ? computerChoice : humanChoice
-        }! ${
-          winner === 'Computer' ? 'Computer' : 'Human'
-        } wins this round! (${humanScore} - ${computerScore})`
-      );
+      result.classList.remove('hidden');
+      result.textContent = `${
+        winner === 'Computer' ? computerChoice : humanChoice
+      } beats ${winner !== 'Computer' ? computerChoice : humanChoice}! ${
+        winner === 'Computer' ? 'Computer' : 'Human'
+      } wins this round!`;
     }
-  };
-
-  let human = '';
-  let computer = '';
-
-  let i = 1;
-  while (i <= 5) {
-    human = getHumanChoice();
-    computer = getComputerChoice();
-
-    if (human !== 'Invalid') {
-      playRound(human, computer);
-      i++;
-    } else console.log('Invalid');
   }
-  if (humanScore > computerScore)
-    return `HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`;
-  else if (humanScore < computerScore)
-    return `COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`;
-  else return `THE GAME IS TIED! ${humanScore} - ${computerScore})`;
+
+  if (hScore == 5) {
+    finalResult.classList.remove('hidden');
+    finalResult.textContent = 'HUMAN WINS THE GAME!';
+    return;
+  }
+
+  if (cScore == 5) {
+    finalResult.classList.remove('hidden');
+    finalResult.textContent = 'COMPUTER WINS THE GAME!';
+    return;
+  }
 };
+
+btns.forEach(btn =>
+  btn.addEventListener('click', function () {
+    humanChoice = btn.textContent;
+    computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+  })
+);
