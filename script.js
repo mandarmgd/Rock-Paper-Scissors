@@ -95,8 +95,9 @@ const playRound = function (humanChoice, computerChoice) {
 };
 
 btns.forEach(btn =>
-  btn.addEventListener('click', function () {
-    humanChoice = btn.textContent;
+  btn.addEventListener('click', function (e) {
+    console.log(e.target);
+    humanChoice = e.target.textContent;
     computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
   })
