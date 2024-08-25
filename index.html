@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
@@ -16,11 +17,11 @@
       <button class="btn-paper">Paper</button>
       <button class="btn-scissors">Scissors</button>
     </div>
-    <div class="results">
-      <div class="round-computer hidden">Computer wins this round</div>
-      <div class="round-human hidden">You win this round!</div>
-      <div class="game-computer hidden">Computer wins the game!</div>
-      <div class="game-human hidden">Bravo! You win the game!</div>
+    <div class="scores">
+      <p1>You</p1>
+      <div id="score-you">0</div>
+      <div id="score-computer">0</div>
+      <p1>Computer</p1>
     </div>
   </div>
   <div id="footer">By Mandar Garud</div>
