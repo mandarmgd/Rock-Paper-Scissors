@@ -1,62 +1,78 @@
-'use strict';
+"use strict";
 
-const getComputerChoice = function() {
-    const rand = Math.trunc(Math.random() * 3) + 1;
-    if (rand === 1) return 'rock';
-    else if (rand === 2) return 'paper';
-    else return 'scissors';
+const btnRock = document.querySelector(".btn-rock");
+const btnPaper = document.querySelector(".btn-paper");
+const btnScissors = document.querySelector(".btn-scissors");
+const compRound = document.querySelector(".round-computer");
+const humanRound = document.querySelector(".round-human");
+const compGame = document.querySelector(".game-computer");
+const humanGame = document.querySelector(".game-human");
+
+const getComputerChoice = function () {
+  const rand = Math.trunc(Math.random() * 3) + 1;
+  if (rand === 1) return "rock";
+  else if (rand === 2) return "paper";
+  else return "scissors";
 };
 
-const getHumanChoice = function() {
-    let choice = prompt("It's your turn, will it be rock, paper or scissors ?");
-    const choice2 = choice.toLowerCase();
-    if (choice2 === 'rock') return 'rock';
-    else if (choice2 === 'paper') return 'paper';
-    else if (choice2 === 'scissors') return 'scissors';
-    else return 'Invalid';
+const getHumanChoice = function () {
+  let choice = prompt("It's your turn, will it be rock, paper or scissors ?");
+  const choice2 = choice.toLowerCase();
+  if (choice2 === "rock") return "rock";
+  else if (choice2 === "paper") return "paper";
+  else if (choice2 === "scissors") return "scissors";
+  else return "Invalid";
 };
 
-const playGame = function() {
-    let humanScore = 0;
-    let computerScore = 0;
+const playGame = function () {
+  let humanScore = 0;
+  let computerScore = 0;
 
-    const playRound = function(humanChoice, computerChoice) {
-        if (humanChoice === computerChoice) console.log(`It's a tie! (${humanScore} - ${computerScore})`);
-        else if (humanChoice !== computerChoice) {
-            let winner = '';
-            let loser = '';
-            if((humanChoice === 'rock' && computerChoice === 'paper') 
-            || (humanChoice === 'paper' && computerChoice === 'scissors')
-            || (humanChoice === 'scissors' && computerChoice === 'rock')) {
-                winner = 'Computer';
-                loser = 'Human';
-                computerScore++;
-            } else {
-                winner = 'Human';
-                loser = 'Computer';
-                humanScore++;
-            }
-            console.log(`${winner === 'Computer' ? computerChoice : humanChoice} beats ${winner !== 'Computer' ? computerChoice : humanChoice}! ${winner === 'Computer' ? 'Computer' : 'Human'} wins this round! (${humanScore} - ${computerScore})`);
-        }
-    };
-
-    let human = '';
-    let computer = '';
-
-    let i = 1;
-    while(i <= 5) {
-        human = getHumanChoice();
-        computer = getComputerChoice();
-
-        if(human !== 'Invalid') {
-            playRound(human, computer);
-            i++;
-        } else console.log('Invalid');
+  const playRound = function (humanChoice, computerChoice) {
+    if (humanChoice === computerChoice)
+      console.log(`It's a tie! (${humanScore} - ${computerScore})`);
+    else if (humanChoice !== computerChoice) {
+      let winner = "";
+      let loser = "";
+      if (
+        (humanChoice === "rock" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "rock")
+      ) {
+        winner = "Computer";
+        loser = "Human";
+        computerScore++;
+      } else {
+        winner = "Human";
+        loser = "Computer";
+        humanScore++;
+      }
+      console.log(
+        `${winner === "Computer" ? computerChoice : humanChoice} beats ${
+          winner !== "Computer" ? computerChoice : humanChoice
+        }! ${
+          winner === "Computer" ? "Computer" : "Human"
+        } wins this round! (${humanScore} - ${computerScore})`
+      );
     }
-    if(humanScore > computerScore) return `HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`;
-    else if(humanScore < computerScore) return `COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`;
-    else return `THE GAME IS TIED! ${humanScore} - ${computerScore})`;
-}
+  };
 
+  let human = "";
+  let computer = "";
 
+  let i = 1;
+  while (i <= 5) {
+    human = getHumanChoice();
+    computer = getComputerChoice();
 
+    if (human !== "Invalid") {
+      playRound(human, computer);
+      i++;
+    } else console.log("Invalid");
+  }
+  if (humanScore > computerScore)
+    return `HUMAN WINS THE GAME :D (${humanScore} - ${computerScore})`;
+  else if (humanScore < computerScore)
+    return `COMPUTER WINS THE GAME! (${humanScore} - ${computerScore})`;
+  else return `THE GAME IS TIED! ${humanScore} - ${computerScore})`;
+};
