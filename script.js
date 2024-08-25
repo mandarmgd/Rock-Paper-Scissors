@@ -9,6 +9,24 @@ const compGame = document.querySelector('.game-computer');
 const humanGame = document.querySelector('.game-human');
 const compScore = document.getElementById('score-computer');
 const humanScore = document.getElementById('score-you');
+const content = document.getElementById('content');
+
+const result = document.createElement('element');
+// result.classList.add('hidden');
+const finalResult = document.createElement('element');
+// finalResult.classList.add('hidden');
+result.textContent = 'You win this round!';
+finalResult.textContent = 'You win the game!';
+result.style.fontSize = '20px';
+finalResult.style.fontSize = '20px';
+finalResult.style.display = 'block';
+result.style.display = 'block';
+result.style.textAlign = 'center';
+finalResult.style.textAlign = 'center';
+result.style.marginTop = '100px';
+finalResult.style.marginTop = '100px';
+content.appendChild(result);
+result.after(finalResult);
 
 const getComputerChoice = function () {
   const rand = Math.trunc(Math.random() * 3) + 1;
