@@ -53,8 +53,10 @@ let computerChoice;
 
 const playRound = function (humanChoice, computerChoice) {
   if (hScore < 5 && cScore < 5) {
-    if (humanChoice === computerChoice) result.textContent = "It's a tie!";
-    else if (humanChoice !== computerChoice) {
+    if (humanChoice === computerChoice) {
+      result.textContent = "It's a tie!";
+      result.classList.remove('hidden');
+    } else if (humanChoice !== computerChoice) {
       let winner = '';
       let loser = '';
       if (
